@@ -1,0 +1,44 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <input id="firstName" type="text" formControlName="firstName" placeholder="First name" />
+      <div *ngIf="submitted && firstName?.errors" class="error">
+        <span *ngIf="firstName?.errors?.['required']">First name required.</span>
+        <span *ngIf="firstName?.errors?.['minlength']">Minimum 2 characters.</span>
+      </div>
+    </div>
+
+    <div>
+      <input id="lastName" type="text" formControlName="lastName" placeholder="Last name" />
+      <div *ngIf="submitted && lastName?.errors" class="error">
+        <span *ngIf="lastName?.errors?.['required']">Last name required.</span>
+        <span *ngIf="lastName?.errors?.['minlength']">Minimum 2 characters.</span>
+      </div>
+    </div>
+
+    <div>
+      <input id="username" type="text" formControlName="username" placeholder="Username" />
+      <div *ngIf="submitted && username?.errors" class="error">
+        <span *ngIf="username?.errors?.['required']">Username required.</span>
+        <span *ngIf="username?.errors?.['minlength']">Minimum 3 characters.</span>
+      </div>
+    </div>
+
+    <div>
+      <input id="email" type="email" formControlName="email" placeholder="Email" />
+      <div *ngIf="submitted && email?.errors" class="error">
+        <span *ngIf="email?.errors?.['required']">Email required.</span>
+        <span *ngIf="email?.errors?.['email']">Email format is not valid.</span>
+      </div>
+    </div>
+
+    <div>
+      <input id="password" type="password" formControlName="password" placeholder="Password" />
+      <div *ngIf="submitted && password?.errors" class="error">
+        <span *ngIf="password?.errors?.['required']">Password required.</span>
+      </div>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">Register</button>
+  </form>
+</div>
