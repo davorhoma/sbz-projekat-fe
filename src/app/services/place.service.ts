@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AddPlaceRequest } from '../shared/models/addPlace.model';
+import { PlaceDTO } from '../shared/models/place.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddPlaceService {
+export class PlaceService {
 
   private placesUrl = 'http://localhost:8080/places/';
 
@@ -14,5 +15,9 @@ export class AddPlaceService {
 
   addPlace(data: AddPlaceRequest): Observable<any> {
     return this.http.post(`${this.placesUrl}`, data);
+  }
+
+  getAllPlaces(): Observable<PlaceDTO[]> {
+    return this.http.get<PlaceDTO[]>(this.placesUrl);
   }
 }

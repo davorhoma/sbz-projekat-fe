@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostDTO } from '../shared/postDTO.model';
+import { PostDTO } from '../shared/models/postDTO.model';
 
 interface PostCreateRequest {
   text: string;
@@ -27,5 +27,9 @@ export class PostService {
 
   getUserPosts(): Observable<PostDTO[]> {
     return this.http.get<PostDTO[]>(`${this.postsUrl}user-posts`);
+  }
+
+  likePost(postId: string): Observable<PostDTO> {
+    return this.http.put<PostDTO>(`${this.postsUrl}like`, postId);
   }
 }

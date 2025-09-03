@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PostDTO } from '../shared/postDTO.model';
+import { PostDTO } from '../shared/models/postDTO.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

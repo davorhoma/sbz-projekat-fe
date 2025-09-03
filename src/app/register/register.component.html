@@ -40,6 +40,14 @@
       </div>
     </div>
 
+    <div>
+      <select name="place" id="place" formControlName="placeId">
+        @for (place of places; track $index) {
+          <option [value]="place.id">{{ place.name }}</option>
+        }
+      </select>
+    </div>
+
     <button mat-flat-button color="primary" type="submit">Register</button>
   </form>
 </div>

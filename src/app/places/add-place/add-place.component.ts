@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AddPlaceService } from 'src/app/services/add-place.service';
+import { PlaceService } from 'src/app/services/place.service';
 import { AddPlaceRequest } from 'src/app/shared/models/addPlace.model';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddPlaceComponent {
   submitted = false;
 
   constructor(private fb: FormBuilder,
-    private addPlaceService: AddPlaceService
+    private addPlaceService: PlaceService
   ) {}
 
   ngOnInit(): void {

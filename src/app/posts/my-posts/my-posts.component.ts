@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
-import { PostDTO } from 'src/app/shared/postDTO.model';
+import { PostDTO } from 'src/app/shared/models/postDTO.model';
 
 @Component({
   selector: 'app-my-posts',

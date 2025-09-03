@@ -6,4 +6,5 @@ export interface PostDTO {
   numberOfReports: number;
   userFirstName: string;
   userLastName: string;
+  likedByCurrentUser: boolean;
 }

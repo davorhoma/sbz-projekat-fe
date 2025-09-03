@@ -23,7 +23,15 @@
       <p class="post-reports"><strong>Reports:</strong> {{ post.numberOfReports }}</p>
 
       <div class="post-actions">
-        <button class="like-button" (click)="likePost(post.id)">Like</button>
+        <button class="like-button" 
+          [ngClass]="{ liked: post.likedByCurrentUser }"
+          (click)="likePost(post.id)">
+          @if(!post.likedByCurrentUser) {
+            Like
+          } @else {
+            Unlike
+          }
+        </button>
         <button class="report-button" (click)="reportPost(post.id)">Report</button>
       </div>
     </div>

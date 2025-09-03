@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService, RegisterRequest } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { PlaceDTO } from '../shared/models/place.model';
+import { PlaceService } from '../services/place.service';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +13,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
+  places: PlaceDTO[] = [];
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private placeService: PlaceService,
     private router: Router
   ) {}
 
@@ -23,7 +27,21 @@ export class RegisterComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(2)]]
+      password: ['', [Validators.required, Validators.minLength(2)]],
+      placeId: [null]
+    });
+    
+    this.placeService.getAllPlaces().subscribe({
+      next: (res) => {
+        this.places = res;
+
+        if (this.places.length > 0) {
+          this.registerForm.patchValue({ placeId: this.places[0].id })
+        }
+      },
+      error: (err) => {
+        console.error('Register failed:', err);
+      }
     });
   }
 
@@ -39,7 +57,8 @@ export class RegisterComponent implements OnInit {
       lastName: this.registerForm.value.lastName,
       username: this.registerForm.value.username,
       email: this.registerForm.value.email,
-      password: this.registerForm.value.password
+      password: this.registerForm.value.password,
+      placeId: this.registerForm.value.placeId
     };
 
     console.log('Login Request:', data);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { ReportService } from 'src/app/services/report.service';
-import { PostDTO } from 'src/app/shared/postDTO.model';
+import { PostDTO } from 'src/app/shared/models/postDTO.model';
 
 @Component({
   selector: 'app-post-list',
@@ -32,7 +32,17 @@ export class PostListComponent {
   }
 
   likePost(postId: string) {
-    
+    this.postService.likePost(postId).subscribe({
+      next: (updatedPost: PostDTO) => {
+        const index = this.posts.findIndex(p => p.id === updatedPost.id);
+        if (index !== -1) {
+          this.posts[index] = updatedPost;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   reportPost(postId: string) {
