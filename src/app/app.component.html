@@ -11,7 +11,9 @@
     </div>
   } @else {
     <div>
-      <button mat-button routerLink="/add-place">Add place</button>
+      @if (authService.isAdmin()) {
+        <button mat-button routerLink="/add-place">Add place</button>
+      }
       <button mat-button routerLink="/create-post">Create post</button>
       <button mat-button routerLink="/my-posts">My posts</button>
       <button mat-button (click)="authService.logout()">Logout</button>
