@@ -7,6 +7,14 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegisterRequest {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
 interface AuthResponse {
   token: string;
   message?: string;
@@ -17,12 +25,15 @@ interface AuthResponse {
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth';
-  private loginUrl = 'http://localhost:8080/auth/login';
 
   constructor(private http: HttpClient) { }
 
+  register(data: RegisterRequest): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, data);
+  }
+
   login(data: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(this.loginUrl, data);
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data);
   }
 
   isLoggedIn(): boolean {

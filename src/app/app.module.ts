@@ -8,16 +8,27 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { AddPlaceComponent } from './places/add-place/add-place.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './utils/jwt.interceptor';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
+import { PostListComponent } from "./posts/post-list/post-list.component";
+import { MyPostsComponent } from './posts/my-posts/my-posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    AddPlaceComponent,
+    CreatePostComponent,
+    PostListComponent,
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +37,12 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule  
+    FormsModule,
+    HttpClientModule,
+],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

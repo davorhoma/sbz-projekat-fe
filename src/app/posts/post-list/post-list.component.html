@@ -1,0 +1,31 @@
+<div class="post-list-container">
+  <h2>All Posts</h2>
+
+  @if (errorMessage) {
+    <div class="error-message">{{ errorMessage }}</div>
+  } @else if (posts.length === 0 && !errorMessage) {
+    <div class="no-posts">No posts found.</div>
+  }
+
+  @for (post of posts; track $index) {
+    <div class="post-card">
+      <p class="post-user"><strong>User:</strong> {{ post.userFirstName }} {{ post.userLastName }}</p>
+      <p class="post-text"><strong>Text:</strong> {{ post.text }}</p>
+      
+      <p class="post-hashtags">
+        <strong>Hashtags:</strong>
+        @for (tag of post.hashtags; track $index) {
+          <span class="hashtag">{{ tag }}</span>
+        }
+      </p>
+      
+      <p class="post-likes"><strong>Likes:</strong> {{ post.numberOfLikes }}</p>
+      <p class="post-reports"><strong>Reports:</strong> {{ post.numberOfReports }}</p>
+
+      <div class="post-actions">
+        <button class="like-button" (click)="likePost(post.id)">Like</button>
+        <button class="report-button" (click)="reportPost(post.id)">Report</button>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,22 @@
+<div class="create-post-container">
+  <div>
+    <label for="text">Post Text:</label>
+    <textarea id="text" [(ngModel)]="text" rows="4" placeholder="Write your post..."></textarea>
+  </div>
+
+  <div>
+    <label for="hashtagInput">Hashtags:</label>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <input type="text" id="hashtagInput" [(ngModel)]="newHashtag" name="newHashtag" placeholder="#tag" />
+      <button type="button" (click)="addHashtag()">Add</button>
+    </div>
+
+    <ul id="hashtagsList">
+      <li *ngFor="let tag of hashtags">
+        {{ tag }} <span style="cursor:pointer; color:red;" (click)="removeHashtag(tag)">×</span>
+      </li>
+    </ul>
+  </div>
+
+  <button type="button" (click)="submitPost()">Create Post</button>
+</div>

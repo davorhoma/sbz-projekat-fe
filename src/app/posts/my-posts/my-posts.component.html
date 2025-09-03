@@ -1,0 +1,25 @@
+<div class="post-list-container">
+  <h2>All Posts</h2>
+
+  @if (errorMessage) {
+    <div style="color:red">{{ errorMessage }}</div>
+  } @else if (posts.length === 0 && !errorMessage) {
+    <div>No posts found.</div>
+  }
+
+  <div class="post-card" style="border:1px solid #ccc; padding:10px; margin-bottom:10px; border-radius:5px;">
+    @for (post of posts; track $index) {
+      <p><strong>Text:</strong> {{ post.text }}</p>
+  
+      <p>
+        <strong>Hashtags:</strong>
+        @for (tag of post.hashtags; track $index) {
+          <span style="margin-right:5px;">#{{ tag }}</span>
+        }
+      </p>
+  
+      <p><strong>Likes:</strong> {{ post.numberOfLikes }}</p>
+      <p><strong>Reports:</strong> {{ post.numberOfReports }}</p>
+    }
+  </div>
+</div>

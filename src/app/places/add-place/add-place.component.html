@@ -1,0 +1,26 @@
+<div class="add-place-container">
+  <h2>Add place</h2>
+  <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
+    <div>
+      <input id="name" type="text" formControlName="name" placeholder="Name" />
+    </div>
+  
+    <div>
+      <input id="country" type="text" formControlName="country" placeholder="Country" />
+    </div>
+
+    <div>
+      <input id="city" type="text" formControlName="city" placeholder="City" />
+    </div>
+
+    <div>
+      <input id="description" type="text" formControlName="description" placeholder="Description" />
+    </div>
+
+    <div>
+      <input id="hashtag" type="text" formControlName="hashtag" placeholder="Hashtag" />
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">Add place</button>
+  </form>
+</div>
