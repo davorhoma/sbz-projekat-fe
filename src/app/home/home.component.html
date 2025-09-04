@@ -1,1 +1,3 @@
-<app-post-list></app-post-list>
+@if(authService.isLoggedIn() && !authService.isAdmin()) {
+  <app-post-list></app-post-list>
+}

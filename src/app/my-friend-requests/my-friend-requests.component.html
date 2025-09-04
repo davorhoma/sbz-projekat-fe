@@ -1,0 +1,45 @@
+<div class="friend-requests-container">
+  <h3>Friends</h3>
+
+  @if (friends.length === 0) {
+    <div>
+      <p>No friends.</p>
+    </div>
+  }
+
+  <ul>
+    @for (friend of friends; track $index) {
+      <li class="request-card">
+        <span class="sender">{{ friend.otherUser.firstName }} {{ friend.otherUser.lastName }}</span>
+      </li>
+    }
+  </ul>
+</div>
+
+<div class="friend-requests-container">
+  <h3>Friend Requests</h3>
+
+  @if (friendRequests.length === 0 && !loading) {
+    <div>
+      <p>No friend requests.</p>
+    </div>
+  }
+
+  <ul>
+    @for (request of friendRequests; track $index) {
+      <li class="request-card">
+        <span class="sender">{{ request.otherUser.firstName }} {{ request.otherUser.lastName }}</span>
+        <span class="status" [ngClass]="request.status.toLowerCase()">
+          ({{ request.status }})
+        </span>
+  
+        @if (request.status === 'PENDING') {
+          <div class="actions">
+            <button (click)="acceptRequest(request.id)" class="accept-btn">Accept</button>
+            <button (click)="declineRequest(request.id)" class="decline-btn">Decline</button>
+          </div>
+        }
+      </li>
+    }
+  </ul>
+</div>

@@ -1,28 +1,31 @@
-<mat-toolbar color="primary">
-  <div>
-    <span routerLink="/home">SBZ Projekat</span>
-  </div>
-  <span class="spacer"></span>
+<mat-toolbar class="toolbar" color="primary">
+  <span class="logo" routerLink="/home">SBZ Projekat</span>
 
-  @if (!authService.isLoggedIn()) {
+  @if (authService.isLoggedIn() && !authService.isAdmin()) {
+    <div class="toolbar-center">
+      <app-search-users></app-search-users>
+    </div>
+  }
+
+  @if (authService.isLoggedIn()) {
+    <div class="toolbar-right">
+      @if (authService.isAdmin()) {
+        <div>
+          <button mat-button routerLink="/add-place">Add place</button>
+        </div>
+      }
+      <div @else>
+        <button mat-button routerLink="/create-post">Create post</button>
+        <button mat-button routerLink="/my-profile">My profile</button>
+      </div>
+      <button mat-button (click)="authService.logout()">Logout</button>
+    </div>
+  } @else {
     <div>
       <button mat-button routerLink="/login">Login</button>
       <button mat-button routerLink="/register">Register</button>
     </div>
-  } @else {
-    <div>
-      @if (authService.isAdmin()) {
-        <button mat-button routerLink="/add-place">Add place</button>
-      }
-      <button mat-button routerLink="/create-post">Create post</button>
-      <button mat-button routerLink="/my-posts">My posts</button>
-      <button mat-button (click)="authService.logout()">Logout</button>
-    </div>
   }
-
-  <div>
-
-  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

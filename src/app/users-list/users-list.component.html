@@ -1,0 +1,23 @@
+<div class="users-list-container">
+  <h2>Search Results</h2>
+
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  @if (users.length > 0) {
+    <ul>
+      @for (user of users; track $index) {
+        <li>
+          <strong>{{ user.username }}</strong> - {{ user.firstName }} {{ user.lastName }}
+          <button (click)="addFriend(user.id)">Add Friend</button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <ng-template #noResults>
+      <p>No users found</p>
+    </ng-template>
+  }
+
+</div>

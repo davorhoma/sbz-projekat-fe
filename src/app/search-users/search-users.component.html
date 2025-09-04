@@ -1,0 +1,11 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search users by name or username"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="onSearch()"
+  />
+  <button class="search-btn" (click)="onSearch()">
+    <img src="assets/search-icon.svg" alt="Search" />
+  </button>
+</div>

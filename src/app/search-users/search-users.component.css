@@ -1,0 +1,39 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+input {
+  flex: 1;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  outline: none;
+  width: 300px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn img {
+  width: 20px;
+  height: 20px;
+}

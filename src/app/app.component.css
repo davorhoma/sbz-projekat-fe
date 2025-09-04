@@ -1,12 +1,30 @@
-mat-toolbar {
+mat-toolbar.toolbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+  display: flex;
+  justify-content: space-between; /* left and right */
+  align-items: center;
   background-color: burlywood;
+  padding: 0 16px;
 }
 
-.spacer {
-  flex: 1 1 auto;
+.logo {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toolbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }

@@ -18,6 +18,10 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { PostListComponent } from "./posts/post-list/post-list.component";
 import { MyPostsComponent } from './posts/my-posts/my-posts.component';
+import { SearchUsersComponent } from './search-users/search-users.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyFriendRequestsComponent } from "./my-friend-requests/my-friend-requests.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { MyPostsComponent } from './posts/my-posts/my-posts.component';
     AddPlaceComponent,
     CreatePostComponent,
     PostListComponent,
-    MyPostsComponent
+    MyPostsComponent,
+    SearchUsersComponent,
+    UsersListComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { MyPostsComponent } from './posts/my-posts/my-posts.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MyFriendRequestsComponent
 ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
