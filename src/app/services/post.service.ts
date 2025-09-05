@@ -24,6 +24,10 @@ export class PostService {
   getAllPosts(): Observable<PostDTO[]> {
     return this.http.get<PostDTO[]>(this.postsUrl);
   }
+  
+  getFeedPosts(): Observable<PostDTO[]> {
+    return this.http.get<PostDTO[]>(`${this.postsUrl}feed`);
+  }
 
   getUserPosts(): Observable<PostDTO[]> {
     return this.http.get<PostDTO[]>(`${this.postsUrl}user-posts`);
