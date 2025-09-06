@@ -1,8 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { booleanAttribute, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserDTO } from '../shared/models/userDTO.model';
 import { FriendRequest } from '../shared/models/friendRequest.model';
+
+export interface BlockResponse {
+  success: boolean;
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +15,7 @@ import { FriendRequest } from '../shared/models/friendRequest.model';
 export class UserService {
 
   private usersUrl = 'http://localhost:8080/users/';
+  private blocksUrl = 'http://localhost:8080/blocks/';
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +42,19 @@ export class UserService {
     })
   }
 
-  getFriends() {
+  getFriends(): Observable<FriendRequest[]> {
     return this.http.get<FriendRequest[]>(`${this.usersUrl}friends`);
+  }
+
+  getBlockedUsers(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.blocksUrl}`);
+  }
+
+  blockUser(userId: string): Observable<BlockResponse> {
+    return this.http.post<BlockResponse>(`${this.blocksUrl}${userId}`, {});
+  }
+  
+  unblockUser(userId: string): Observable<BlockResponse> {
+    return this.http.delete<BlockResponse>(`${this.blocksUrl}${userId}`);
   }
 }
