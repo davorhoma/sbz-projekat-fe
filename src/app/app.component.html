@@ -13,11 +13,13 @@
         <div>
           <button mat-button routerLink="/add-place">Add place</button>
         </div>
+      } @else {
+        <div>
+          <button mat-button routerLink="/places">See places</button>
+          <button mat-button routerLink="/create-post">Create post</button>
+          <button mat-button routerLink="/my-profile">My profile</button>
+        </div>
       }
-      <div @else>
-        <button mat-button routerLink="/create-post">Create post</button>
-        <button mat-button routerLink="/my-profile">My profile</button>
-      </div>
       <button mat-button (click)="authService.logout()">Logout</button>
     </div>
   } @else {
@@ -28,4 +30,7 @@
   }
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+<div class="router-outlet">
+  <router-outlet></router-outlet>
+</div>

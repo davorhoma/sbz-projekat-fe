@@ -22,8 +22,11 @@ export class PostListComponent {
   }
 
   fetchPosts() {
-    this.postService.getAllPosts().subscribe({
-      next: (res) => this.posts = res,
+    this.postService.getFeedPosts().subscribe({
+      next: (res) => {
+        this.posts = res
+        console.log(this.posts);
+      },
       error: (err) => {
         console.error(err);
         this.errorMessage = 'Failed to fetch posts';

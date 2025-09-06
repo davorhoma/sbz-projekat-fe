@@ -8,6 +8,7 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { MyPostsComponent } from './posts/my-posts/my-posts.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { PlaceListComponent } from './places/place-list/place-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'my-posts', component: MyPostsComponent },
   { path: 'users-list', component: UsersListComponent },
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'places', component: PlaceListComponent },
 ];
 
 @NgModule({

@@ -5,4 +5,5 @@ export interface PlaceDTO {
   city: string;
   description: string;
   hashtag: string;
+  averageScore: number;
 }

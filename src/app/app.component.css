@@ -28,3 +28,8 @@ mat-toolbar.toolbar {
   gap: 8px;
   align-items: center;
 }
+
+.router-outlet {
+  height: 100vh;
+  margin: 64px 0;
+}

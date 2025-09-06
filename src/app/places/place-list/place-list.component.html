@@ -1,0 +1,54 @@
+<div class="places-container">
+  <h2>Places</h2>
+  <div class="places-list">
+    @for (place of places; track $index) {
+      <div class="place-card">
+        <div>
+          <p><strong>Name:</strong> {{ place.name }}</p>
+          <p><strong>Country:</strong> {{ place.country }}</p>
+          <p><strong>City:</strong> {{ place.city }}</p>
+          <p><strong>Description:</strong> {{ place.description }}</p>
+          <p><strong>Hashtag:</strong> {{ place.hashtag }}</p>
+        </div>
+        <div class="rating">
+          <div>
+            <button (click)="openRatingDialog(place)">Rate</button>
+          </div>
+          <div>
+            <p>Rating: {{ place.averageScore.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<ng-template #ratingDialog let-dialogRef>
+  <div class="rating-container">
+    <h2>Rate {{ selectedPlace?.name }}</h2>
+    <form [formGroup]="ratingForm" (ngSubmit)="submitRating()">
+      <div class="stars">
+        @for (star of [1,2,3,4,5]; track $index) {
+          <span (click)="selectRating(star)" 
+                [class.filled]="star <= score">
+            &#9733;
+          </span>
+        }
+      </div>
+  
+      <div class="input-group">
+        <label for="rating-description">Description</label>
+        <textarea id="rating-description" rows="3" formControlName="description" placeholder="Write your review..."></textarea>
+      </div>
+  
+      <div class="input-group">
+        <label for="rating-hashtag">Hashtag</label>
+        <input id="rating-hashtag" type="text" formControlName="hashtag" placeholder="#fun">
+      </div>
+  
+      <div class="actions">
+        <button mat-button type="submit" [ngClass]="{'custom-disabled': ratingForm.invalid || score === 0}" [disabled]="ratingForm.invalid || score === 0">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

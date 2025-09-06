@@ -1,4 +1,4 @@
-<div class="friend-requests-container">
+<div class="friends-container">
   <h3>Friends</h3>
 
   @if (friends.length === 0) {
@@ -9,8 +9,16 @@
 
   <ul>
     @for (friend of friends; track $index) {
-      <li class="request-card">
+      <li class="friend-card">
         <span class="sender">{{ friend.otherUser.firstName }} {{ friend.otherUser.lastName }}</span>
+
+        <div class="block-btn-container">
+          <button 
+            [ngClass]="blockedIds.includes(friend.otherUser.id) ? 'unblock-btn' : 'block-btn'"
+            (click)="toggleBlock(friend.otherUser.id)">
+            {{ blockedIds.includes(friend.otherUser.id) ? 'Unblock' : 'Block' }}
+          </button>
+        </div>
       </li>
     }
   </ul>

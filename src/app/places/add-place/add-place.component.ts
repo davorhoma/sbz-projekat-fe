@@ -40,6 +40,9 @@ export class AddPlaceComponent {
       hashtag: this.addPlaceForm.value.hashtag
     };
 
+    console.log('data:', data);
+    
+
     this.addPlaceService.addPlace(data).subscribe({
       next: (res) => {
         console.log('Place added:', res);

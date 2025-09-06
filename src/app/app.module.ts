@@ -22,6 +22,7 @@ import { SearchUsersComponent } from './search-users/search-users.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyFriendRequestsComponent } from "./my-friend-requests/my-friend-requests.component";
+import { PlaceListComponent } from './places/place-list/place-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MyFriendRequestsComponent } from "./my-friend-requests/my-friend-reques
     MyPostsComponent,
     SearchUsersComponent,
     UsersListComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    PlaceListComponent
   ],
   imports: [
     BrowserModule,
