@@ -11,7 +11,7 @@
     </div>
 
     <div *ngIf="submitted && error" class="error">
-      <span>Wrong password and email.</span>
+      <span>{{ error || 'Login failed.' }}</span>
     </div>
 
     <button mat-flat-button color="primary" type="submit">Login</button>

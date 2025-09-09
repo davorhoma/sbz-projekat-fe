@@ -51,9 +51,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed:', err);
-        this.error = err.error?.message || 'Login failed';
-        console.log(this.error);
-        
+        this.error = err.error || 'Login failed';        
       }
     });
   }
