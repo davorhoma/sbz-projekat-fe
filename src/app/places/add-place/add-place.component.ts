@@ -46,6 +46,8 @@ export class AddPlaceComponent {
     this.addPlaceService.addPlace(data).subscribe({
       next: (res) => {
         console.log('Place added:', res);
+
+        this.addPlaceForm.reset();
       },
       error: (err) => {
         console.error('Adding place failed:', err);        

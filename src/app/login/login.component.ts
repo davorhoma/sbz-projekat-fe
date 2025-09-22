@@ -44,7 +44,6 @@ export class LoginComponent {
     this.authService.login(data).subscribe({
       next: (res) => {
         console.log('Login successful:', res);
-        // e.g. save token in localStorage
         localStorage.setItem('token', res.token);
 
         this.router.navigate(['/home']);
